@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quantum Children — Your sensors are drifting. We catch it before it costs you.</title>
+<meta name="description" content="Quantum Children is sensor intelligence: it reads the sensors you already run — gas arrays, process instruments, farm and grain sensors — and catches drift, faults, and anomalies before they become failures. Published, reproducible, no new hardware. Free look-back audit on your own sensor history.">
+<style>
+  :root{
+    --ink:#12201a; --ink2:#33463d; --paper:#f6f4ef; --card:#ffffff;
+    --green:#1f7a4d; --green-dk:#175c3a; --amber:#c8611a; --line:#e2ded4; --steel:#5c6b63;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       background:var(--paper);color:var(--ink);line-height:1.65;font-size:17px}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
+  header{border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:10}
+  .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+  .brand{display:flex;flex-direction:column;line-height:1.05}
+  .logo{font-weight:800;font-size:1.22rem;letter-spacing:.05em}
+  .logo span{color:var(--green)}
+  .logo small{display:block;font-weight:600;font-size:.62rem;letter-spacing:.24em;color:var(--steel);margin-top:3px}
+  nav a{color:var(--ink2);text-decoration:none;margin-left:22px;font-size:.95rem}
+  nav a:hover{color:var(--green)}
+  .hero{padding:82px 0 60px}
+  .kicker{color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;margin-bottom:14px}
+  h1{font-size:clamp(2rem,5vw,3.1rem);line-height:1.12;font-weight:800;letter-spacing:-.01em;max-width:20ch}
+  .hero p.lede{margin:22px 0 30px;font-size:1.15rem;color:var(--ink2);max-width:60ch}
+  .btn{display:inline-block;background:var(--green);color:#fff;font-weight:700;padding:14px 26px;
+       border-radius:6px;text-decoration:none;font-size:1rem}
+  .btn:hover{background:var(--green-dk)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink);margin-left:12px}
+  .btn.ghost:hover{border-color:var(--green);color:var(--green)}
+  .statband{background:var(--ink);color:#eee;padding:44px 0}
+  .statband .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:30px}
+  .stat h3{font-size:2rem;color:#fff;font-weight:800}
+  .stat h3 em{color:#5fd39a;font-style:normal}
+  .stat p{color:#b7c4bc;font-size:.95rem;margin-top:6px}
+  section{padding:70px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:1.7rem;font-weight:800;margin-bottom:8px;letter-spacing:-.01em}
+  .sub{color:var(--steel);margin-bottom:34px;max-width:64ch}
+  .steps,.apps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px}
+  .card .num{display:inline-block;background:var(--ink);color:#fff;font-weight:800;border-radius:5px;
+             padding:2px 10px;font-size:.85rem;margin-bottom:14px}
+  .card h3{font-size:1.12rem;margin-bottom:10px}
+  .card p{color:var(--ink2);font-size:.97rem}
+  .card p + p{margin-top:10px}
+  .free{color:var(--green);font-weight:700}
+  .tagtop{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+          color:var(--amber);margin-bottom:8px}
+  .quote{background:var(--card);border-left:4px solid var(--green);border-radius:0 10px 10px 0;
+         padding:26px 30px;margin:34px 0;font-size:1.12rem;font-style:italic;color:var(--ink2)}
+  .quote b{color:var(--ink);font-style:normal}
+  ul.plain{list-style:none}
+  ul.plain li{padding:9px 0 9px 28px;position:relative;color:var(--ink2)}
+  ul.plain li::before{content:"—";position:absolute;left:0;color:var(--green);font-weight:700}
+  .fine{font-size:.85rem;color:var(--steel);margin-top:26px;max-width:72ch}
+  .proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:8px}
+  .proof .card h3{color:var(--green);font-size:1rem}
+  .proof .card .big{font-size:1.6rem;font-weight:800;color:var(--ink);display:block;margin:4px 0}
+  .bio{max-width:66ch}
+  .tag{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:3px 12px;
+       font-size:.8rem;color:var(--steel);margin:0 6px 8px 0;background:var(--card)}
+  .contactband{background:var(--ink);color:#dfe6e1;padding:70px 0;border-bottom:none}
+  .contactband h2{color:#fff}
+  .contactband a.mail{color:#5fd39a;font-weight:700;text-decoration:none;font-size:1.25rem}
+  .contactband p{max-width:60ch}
+  footer{background:#0c1611;color:#8ba396;font-size:.82rem;padding:28px 0}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:10px 30px;justify-content:space-between}
+  footer a{color:#8ba396}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <div class="logo">QUANTUM<span>CHILDREN</span></div>
+      <small>SENSOR INTELLIGENCE</small>
+    </div>
+    <nav>
+      <a href="#how">How it works</a>
+      <a href="#apps">Who it's for</a>
+      <a href="#proof">Proof</a>
+      <a href="#audit">Free audit</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">Sensor intelligence · Sylvan Lake, Alberta</div>
+    <h1>Your sensors are drifting. You can't see it. We can.</h1>
+    <p class="lede">Every sensor you own is slowly lying to you — calibration drifts, faults creep in, and the readings look fine right up until they don't. Quantum Children reads the sensor data you already collect and flags drift, faults, and anomalies early — no new hardware, no rip-and-replace. Prove it on your own history, free.</p>
+    <a class="btn" href="#audit">Get the free sensor audit</a>
+    <a class="btn ghost" href="#apps">See who it's for →</a>
+  </div>
+</div>
+
+<div class="statband">
+  <div class="wrap">
+    <div class="stat"><h3><em>16 / 16</em> sensors drifting</h3><p>In a public 36-month industrial gas-array dataset, the engine flagged calibration drift in every sensor — the kind that goes unnoticed until a reading is wrong.</p></div>
+    <div class="stat"><h3><em>6</em> gases fingerprinted</h3><p>Distinguished six industrial gases by their entropy signature alone, from the same raw sensor stream.</p></div>
+    <div class="stat"><h3><em>$0</em> new hardware</h3><p>Runs on the feeds you already have. The first look at your data is free.</p></div>
+  </div>
+</div>
+
+<section id="how">
+  <div class="wrap">
+    <h2>One engine. Any sensor. It reads the pattern, not the label.</h2>
+    <p class="sub">Quantum Children is built on an entropy process-intelligence engine that measures how "ordered" or "chaotic" a sensor stream is, moment to moment. Healthy equipment has a fingerprint. When that fingerprint shifts — a sensor drifting out of calibration, a process sliding toward a fault — the engine sees it in the numbers before it shows up as a failure. The same engine has run, unchanged, across industrial gas arrays and process-plant sensors, which is what tells us it isn't tuned to one lucky dataset.</p>
+    <div class="proof">
+      <div class="card"><h3>Drift detection</h3><span class="big">Silent killer</span><p>Sensors degrade slowly and quietly. The engine tracks each one over time and flags the ones sliding out of trust — before a bad reading drives a bad decision.</p></div>
+      <div class="card"><h3>Fault &amp; anomaly</h3><span class="big">Early warning</span><p>It separates a normal run from a faulty one by its entropy signature, so an off-spec batch or a failing unit surfaces early instead of at the end.</p></div>
+      <div class="card"><h3>Fingerprinting</h3><span class="big">Know what you're seeing</span><p>Different substances and process states leave distinct signatures. The engine can tell them apart from the raw stream — no re-instrumenting the site.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="apps">
+  <div class="wrap">
+    <h2>Built for the people who live and die by their sensors.</h2>
+    <p class="sub">If your operation runs on readings you have to trust, this is for you.</p>
+    <div class="apps">
+      <div class="card">
+        <span class="tagtop">Oil &amp; Gas</span>
+        <h3>Gas plants, pipelines, facilities</h3>
+        <p>Gas-detection arrays, process instruments, and monitoring feeds drift over months of continuous service. Quantum Children watches every sensor for calibration drift and flags anomalies in the stream — so a leak alarm or a process reading is one you can actually trust. Built by a 30-year gas-plant tradesman who knows what a bad reading costs.</p>
+      </div>
+      <div class="card">
+        <span class="tagtop">Agriculture</span>
+        <h3>Farms, greenhouses, grain storage</h3>
+        <p>Soil-moisture and nutrient probes, greenhouse climate sensors, grain-bin temperature and moisture monitors — all of them drift, and a wrong reading means a wasted input or a spoiled bin. The same engine that fingerprinted six industrial gases watches your ag sensors for the drift and anomalies you'd otherwise catch too late.</p>
+      </div>
+      <div class="card">
+        <span class="tagtop">Process &amp; Industrial</span>
+        <h3>Plants, bioreactors, utilities</h3>
+        <p>The engine has already run on full process-plant sensor data — over a hundred thousand time-series samples across a fermentation dataset — separating normal runs from faults. If your process is instrumented, Quantum Children turns those sensors into an early-warning layer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proof">
+  <div class="wrap">
+    <h2>Don't take our word for it — it's published and reproducible.</h2>
+    <p class="sub">This isn't a slide. The core studies are written up and posted publicly with permanent DOIs, run on open datasets anyone can download and check. Metered results, not marketing math.</p>
+    <ul class="plain">
+      <li><b>Industrial gas sensors</b> — 13,910 samples, 16-sensor array, 36 months of continuous drift. Six gases fingerprinted; drift detected in all 16 sensors. Public dataset, published to Zenodo (DOI 10.5281/zenodo.18809407).</li>
+      <li><b>Process / fermentation sensors</b> — 113,935 time-series samples across 100 industrial fermentation batches; normal runs separated from fault runs by entropy signature. Public IndPenSim dataset.</li>
+      <li><b>Same engine, zero changes</b> — the algorithm that ran on gas sensors is the identical one that ran on process data. That's the test that separates a real method from a fitted one.</li>
+    </ul>
+    <div class="quote">"A sensor doesn't tell you when it's gone wrong — it just keeps reporting, confidently, off by more every month. Catching that quietly, early, on the sensors you already own, is the whole job."<br><b>— Jim Jardine, founder</b></div>
+  </div>
+</section>
+
+<section id="audit">
+  <div class="wrap">
+    <h2>Start free. See it on your own sensors before you spend a dollar.</h2>
+    <p class="sub">Every number we show you is measured from your data or clearly labeled a projection. The path is simple:</p>
+    <div class="steps">
+      <div class="card">
+        <span class="num">STEP 1</span>
+        <h3>Free look-back audit</h3>
+        <p>Send us a stretch of your historical sensor logs — gas arrays, process tags, farm probes, whatever you run. We send back a report showing the drift, faults, and anomalies the engine finds in your own data.</p>
+        <p><span class="free">Free.</span> Nothing installed, no access to live systems.</p>
+      </div>
+      <div class="card">
+        <span class="num">STEP 2</span>
+        <h3>Live trial</h3>
+        <p>If the report earns it, we run the engine alongside your existing monitoring for a fixed trial window — early-warning flags on your real feeds, measured against what actually happened.</p>
+        <p><span class="free">Free trial window.</span> This is where the audit becomes proof.</p>
+      </div>
+      <div class="card">
+        <span class="num">STEP 3</span>
+        <h3>Deploy</h3>
+        <p>Turn it on as a standing early-warning layer over your sensors. Simple terms, no new hardware, cancel if it isn't earning its place.</p>
+        <p>If it doesn't catch things worth catching, you don't keep it.</p>
+      </div>
+    </div>
+    <p class="fine">Straight talk on your data: we analyze what you send us to produce your report and nothing else. The engine may surface deeper structure in your sensor data along the way — anything beyond the report, we only pursue if you ask us to. Your data is used for your report. Period.</p>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <h2>Built by a tradesman who's read a lot of gauges.</h2>
+    <p class="sub">You should know who's behind it.</p>
+    <div class="bio">
+      <p>Jim Jardine spent close to 30 years as a Red Seal steamfitter-pipefitter building and running gas plants — roughly a hundred facilities across Alberta's energy patch and seven years as a superintendent across three plant builds at NOVA Chemicals' Joffre site. He's spent a career depending on instrument readings and knows exactly what a quietly-wrong sensor costs downstream.</p>
+      <p style="margin-top:14px">Quantum Children is what happened when that plant-floor instinct met a new method: measure the pattern, trust nothing you can't check, and catch the drift before it catches you. The research is published openly under the QuantumChildren name — the same name on this door.</p>
+      <div style="margin-top:22px">
+        <span class="tag">Red Seal Steamfitter-Pipefitter</span>
+        <span class="tag">~100 gas plant &amp; petrochemical facilities</span>
+        <span class="tag">Published research · Zenodo</span>
+        <span class="tag">github.com/JJardine919</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="contactband" id="contact">
+  <div class="wrap">
+    <h2>Send us your sensor history. We'll show you what's hiding in it.</h2>
+    <p style="margin:14px 0 26px">One email. Tell us roughly what you run — a gas-detection array, a process plant, a farm or a grain operation — and we'll tell you exactly what to send and what you'll get back. No meeting required.</p>
+    <a class="mail" href="mailto:jim@lattice24.com?subject=Free%20sensor%20audit%20%E2%80%94%20Quantum%20Children">jim@lattice24.com</a>
+    <p style="margin-top:8px;color:#9db3a7">Jim Jardine · (825) 305-0225 · Sylvan Lake, Alberta, Canada</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Quantum Children · 2396179 Alberta Inc.</div>
+    <div>All results are measured from real data or explicitly labeled as projections. · <a href="mailto:jim@lattice24.com">Contact</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
