@@ -102,16 +102,16 @@
 
 <div class="statband">
   <div class="wrap">
-    <div class="stat"><h3><em>16 / 16</em> sensors drifting</h3><p>In a public 36-month industrial gas-array dataset, the engine flagged calibration drift in every sensor — the kind that goes unnoticed until a reading is wrong.</p></div>
-    <div class="stat"><h3><em>6</em> gases fingerprinted</h3><p>Distinguished six industrial gases by their entropy signature alone, from the same raw sensor stream.</p></div>
-    <div class="stat"><h3><em>$0</em> new hardware</h3><p>Runs on the feeds you already have. The first look at your data is free.</p></div>
+    <div class="stat"><h3><em>18.5&sigma;</em> gas separation</h3><p>On a public 13,910-sample industrial gas array, six gases separate by entropy signature at 18.5 sigma — 11 of the 15 gas pairs beyond 3 sigma individually. Published dataset, reproducible arithmetic.</p></div>
+    <div class="stat"><h3><em>0.75</em> AUC fault detection</h3><p>On the public IndPenSim benchmark — 100 fermentation batches, 113,935 samples — faulty batches separate from matched healthy controls at 0.75 AUC. Same engine, unchanged, different industry.</p></div>
+    <div class="stat"><h3><em>$0</em> new hardware</h3><p>Runs on the feeds you already have. Same input, same answer, every time — no model to retrain, no random seed, nothing sent to a cloud. The first look at your data is free.</p></div>
   </div>
 </div>
 
 <section id="how">
   <div class="wrap">
     <h2>One engine. Any sensor. It reads the pattern, not the label.</h2>
-    <p class="sub">Quantum Children is built on an entropy process-intelligence engine that measures how "ordered" or "chaotic" a sensor stream is, moment to moment. Healthy equipment has a fingerprint. When that fingerprint shifts — a sensor drifting out of calibration, a process sliding toward a fault — the engine sees it in the numbers before it shows up as a failure. The same engine has run, unchanged, across industrial gas arrays and process-plant sensors, which is what tells us it isn't tuned to one lucky dataset.</p>
+    <p class="sub">Quantum Children is built on an entropy process-intelligence engine that measures how "ordered" or "chaotic" a sensor stream is, moment to moment. Healthy equipment has a fingerprint. When that fingerprint shifts — a sensor drifting out of calibration, a process sliding toward a fault — the engine sees it in the numbers before it shows up as a failure. The same engine has run unchanged across a public industrial gas array (13,910 samples) and the IndPenSim fermentation benchmark (113,935 samples) — two industries, two published datasets, no retuning between them.</p>
     <div class="proof">
       <div class="card"><h3>Drift detection</h3><span class="big">Silent killer</span><p>Sensors degrade slowly and quietly. The engine tracks each one over time and flags the ones sliding out of trust — before a bad reading drives a bad decision.</p></div>
       <div class="card"><h3>Fault &amp; anomaly</h3><span class="big">Early warning</span><p>It separates a normal run from a faulty one by its entropy signature, so an off-spec batch or a failing unit surfaces early instead of at the end.</p></div>
@@ -149,7 +149,7 @@
     <h2>Don't take our word for it — it's published and reproducible.</h2>
     <p class="sub">This isn't a slide. The core studies are written up and posted publicly with permanent DOIs, run on open datasets anyone can download and check. Metered results, not marketing math.</p>
     <ul class="plain">
-      <li><b>Industrial gas sensors</b> — 13,910 samples, 16-sensor array, 36 months of continuous drift. Six gases fingerprinted; drift detected in all 16 sensors. Public dataset, published to Zenodo (DOI 10.5281/zenodo.18809407).</li>
+      <li><b>Industrial gas sensors</b> — 13,910 samples, 16-sensor array. Six gases separate by entropy signature at 18.5 sigma, with 11 of the 15 gas pairs beyond 3 sigma individually. Public dataset, published to Zenodo (DOI 10.5281/zenodo.18809407).</li>
       <li><b>Process / fermentation sensors</b> — 113,935 time-series samples across 100 industrial fermentation batches; normal runs separated from fault runs by entropy signature. Public IndPenSim dataset.</li>
       <li><b>Same engine, zero changes</b> — the algorithm that ran on gas sensors is the identical one that ran on process data. That's the test that separates a real method from a fitted one.</li>
     </ul>
