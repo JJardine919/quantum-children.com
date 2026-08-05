@@ -57,6 +57,16 @@
   ul.plain li{padding:9px 0 9px 28px;position:relative;color:var(--ink2)}
   ul.plain li::before{content:"—";position:absolute;left:0;color:var(--green);font-weight:700}
   .fine{font-size:.85rem;color:var(--steel);margin-top:26px;max-width:72ch}
+  .intake{margin-top:34px;padding:26px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+  .intake h3{font-size:1.12rem;margin-bottom:6px}
+  .intake-sub{font-size:.95rem;color:var(--ink2);margin-bottom:18px;max-width:64ch}
+  .ig{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .intake label{display:block;font-size:.82rem;color:var(--steel);margin-bottom:5px}
+  .intake input[type=text]{width:100%;padding:10px 12px;border:1px solid var(--line);
+     border-radius:7px;background:var(--paper);color:var(--ink);font-size:1rem;font-family:inherit}
+  .intake .btn{display:inline-block;background:var(--green);color:#fff;padding:12px 22px;
+     border-radius:8px;text-decoration:none;font-weight:600}
+  .intake .btn:hover{background:var(--green-dk)}
   .proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:8px}
   .proof .card h3{color:var(--green);font-size:1rem}
   .proof .card .big{font-size:1.6rem;font-weight:800;color:var(--ink);display:block;margin:4px 0}
@@ -181,6 +191,24 @@
         <p>If it doesn't catch things worth catching, you don't keep it.</p>
       </div>
     </div>
+    <div class="intake">
+      <h3>Start the audit</h3>
+      <p class="intake-sub">Tell me what you run. I'll reply with how to send the data
+      securely and what format is easiest — usually whatever your historian already exports.</p>
+      <div class="ig">
+        <div><label for="qname">Your name</label><input type="text" id="qname" placeholder="Jane Smith"></div>
+        <div><label for="qorg">Organisation</label><input type="text" id="qorg" placeholder="Acme Energy"></div>
+        <div><label for="qsens">What sensors / how many channels</label><input type="text" id="qsens" placeholder="e.g. 40 process tags, gas detection array"></div>
+        <div><label for="qhist">How much history you keep</label><input type="text" id="qhist" placeholder="e.g. 18 months in PI"></div>
+      </div>
+      <div style="margin-top:12px"><label for="qwhat">What you'd want checked first</label>
+        <input type="text" id="qwhat" placeholder="optional — a unit, a suspect instrument, a period"></div>
+      <p style="margin-top:20px"><a id="qBtn" class="btn" href="#">Open this in your email &rarr;</a></p>
+      <p class="fine" style="margin-top:12px"><b>Nothing is sent from this page.</b> The button
+      opens your own email client with what you typed above already filled in. No form service,
+      no tracking, no third party. You send it, or you don't.</p>
+    </div>
+
     <p class="fine">Straight talk on your data: we analyze what you send us to produce your report and nothing else. The engine may surface deeper structure in your sensor data along the way — anything beyond the report, we only pursue if you ask us to. Your data is used for your report. Period.</p>
   </div>
 </section>
@@ -218,5 +246,30 @@
   </div>
 </footer>
 
+
+<script>
+(function(){
+  var ids=["qname","qorg","qsens","qhist","qwhat"];
+  function v(id){var e=document.getElementById(id);return e&&e.value?e.value.trim():"";}
+  function build(){
+    var body=[
+      v("qname")?"Name: "+v("qname"):"",
+      v("qorg")?"Organisation: "+v("qorg"):"","",
+      "What I run:      "+(v("qsens")||"(not stated)"),
+      "History kept:    "+(v("qhist")||"(not stated)"),
+      v("qwhat")?("Check first:     "+v("qwhat")):"","",
+      "I'd like the free look-back audit. Please let me know how to send the data",
+      "and what format is easiest.","",
+      "(Sent from quantum-children.com)"
+    ].join("\n");
+    var btn=document.getElementById("qBtn");
+    if(btn) btn.href="mailto:jim@lattice24.com?subject="
+      +encodeURIComponent("Free sensor audit — "+(v("qorg")||v("qname")||"enquiry"))
+      +"&body="+encodeURIComponent(body);
+  }
+  ids.forEach(function(id){var e=document.getElementById(id); if(e) e.addEventListener("input",build);});
+  build();
+})();
+</script>
 </body>
 </html>
