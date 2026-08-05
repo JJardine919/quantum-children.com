@@ -57,16 +57,6 @@
   ul.plain li{padding:9px 0 9px 28px;position:relative;color:var(--ink2)}
   ul.plain li::before{content:"—";position:absolute;left:0;color:var(--green);font-weight:700}
   .fine{font-size:.85rem;color:var(--steel);margin-top:26px;max-width:72ch}
-  .intake{margin-top:34px;padding:26px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
-  .intake h3{font-size:1.12rem;margin-bottom:6px}
-  .intake-sub{font-size:.95rem;color:var(--ink2);margin-bottom:18px;max-width:64ch}
-  .ig{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
-  .intake label{display:block;font-size:.82rem;color:var(--steel);margin-bottom:5px}
-  .intake input[type=text]{width:100%;padding:10px 12px;border:1px solid var(--line);
-     border-radius:7px;background:var(--paper);color:var(--ink);font-size:1rem;font-family:inherit}
-  .intake .btn{display:inline-block;background:var(--green);color:#fff;padding:12px 22px;
-     border-radius:8px;text-decoration:none;font-weight:600}
-  .intake .btn:hover{background:var(--green-dk)}
   .proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:8px}
   .proof .card h3{color:var(--green);font-size:1rem}
   .proof .card .big{font-size:1.6rem;font-weight:800;color:var(--ink);display:block;margin:4px 0}
@@ -112,16 +102,16 @@
 
 <div class="statband">
   <div class="wrap">
-    <div class="stat"><h3><em>18.5&sigma;</em> gas separation</h3><p>On a public 13,910-sample industrial gas array, six gases separate by entropy signature at 18.5 sigma — 11 of the 15 gas pairs beyond 3 sigma individually. Published dataset, reproducible arithmetic.</p></div>
-    <div class="stat"><h3><em>0.75</em> AUC fault detection</h3><p>On the public IndPenSim benchmark — 100 fermentation batches, 113,935 samples — faulty batches separate from matched healthy controls at 0.75 AUC. Same engine, unchanged, different industry.</p></div>
-    <div class="stat"><h3><em>$0</em> new hardware</h3><p>Runs on the feeds you already have. Same input, same answer, every time — no model to retrain, no random seed, nothing sent to a cloud. The first look at your data is free.</p></div>
+    <div class="stat"><h3><em>16 / 16</em> sensors drifting</h3><p>In a public 36-month industrial gas-array dataset, the engine flagged calibration drift in every sensor — the kind that goes unnoticed until a reading is wrong.</p></div>
+    <div class="stat"><h3><em>6</em> gases fingerprinted</h3><p>Distinguished six industrial gases by their entropy signature alone, from the same raw sensor stream.</p></div>
+    <div class="stat"><h3><em>$0</em> new hardware</h3><p>Runs on the feeds you already have. The first look at your data is free.</p></div>
   </div>
 </div>
 
 <section id="how">
   <div class="wrap">
     <h2>One engine. Any sensor. It reads the pattern, not the label.</h2>
-    <p class="sub">Quantum Children is built on an entropy process-intelligence engine that measures how "ordered" or "chaotic" a sensor stream is, moment to moment. Healthy equipment has a fingerprint. When that fingerprint shifts — a sensor drifting out of calibration, a process sliding toward a fault — the engine sees it in the numbers before it shows up as a failure. The same engine has run unchanged across a public industrial gas array (13,910 samples) and the IndPenSim fermentation benchmark (113,935 samples) — two industries, two published datasets, no retuning between them.</p>
+    <p class="sub">Quantum Children is built on an entropy process-intelligence engine that measures how "ordered" or "chaotic" a sensor stream is, moment to moment. Healthy equipment has a fingerprint. When that fingerprint shifts — a sensor drifting out of calibration, a process sliding toward a fault — the engine sees it in the numbers before it shows up as a failure. The same engine has run, unchanged, across industrial gas arrays and process-plant sensors, which is what tells us it isn't tuned to one lucky dataset.</p>
     <div class="proof">
       <div class="card"><h3>Drift detection</h3><span class="big">Silent killer</span><p>Sensors degrade slowly and quietly. The engine tracks each one over time and flags the ones sliding out of trust — before a bad reading drives a bad decision.</p></div>
       <div class="card"><h3>Fault &amp; anomaly</h3><span class="big">Early warning</span><p>It separates a normal run from a faulty one by its entropy signature, so an off-spec batch or a failing unit surfaces early instead of at the end.</p></div>
@@ -159,7 +149,7 @@
     <h2>Don't take our word for it — it's published and reproducible.</h2>
     <p class="sub">This isn't a slide. The core studies are written up and posted publicly with permanent DOIs, run on open datasets anyone can download and check. Metered results, not marketing math.</p>
     <ul class="plain">
-      <li><b>Industrial gas sensors</b> — 13,910 samples, 16-sensor array. Six gases separate by entropy signature at 18.5 sigma, with 11 of the 15 gas pairs beyond 3 sigma individually. Public dataset, published to Zenodo (DOI 10.5281/zenodo.18809407).</li>
+      <li><b>Industrial gas sensors</b> — 13,910 samples, 16-sensor array, 36 months of continuous drift. Six gases fingerprinted; drift detected in all 16 sensors. Public dataset, published to Zenodo (DOI 10.5281/zenodo.18809407).</li>
       <li><b>Process / fermentation sensors</b> — 113,935 time-series samples across 100 industrial fermentation batches; normal runs separated from fault runs by entropy signature. Public IndPenSim dataset.</li>
       <li><b>Same engine, zero changes</b> — the algorithm that ran on gas sensors is the identical one that ran on process data. That's the test that separates a real method from a fitted one.</li>
     </ul>
@@ -191,29 +181,6 @@
         <p>If it doesn't catch things worth catching, you don't keep it.</p>
       </div>
     </div>
-    <div class="intake">
-      <h3 style="margin-bottom:10px">Run it yourself first — right now, free</h3>
-      <p class="intake-sub"><a href="/audit.html" style="font-weight:600">→ Open the entropy audit tool</a>
-      · drop a CSV of your sensor history and see which channels moved across the period.
-      It runs entirely in your browser — the file is never uploaded, and you don't have to
-      talk to anyone. Then use the form below if the flagged channels look worth chasing.</p>
-      <h3 style="margin-top:26px">Or send it to me</h3>
-      <p class="intake-sub">Tell me what you run. I'll reply with how to send the data
-      securely and what format is easiest — usually whatever your historian already exports.</p>
-      <div class="ig">
-        <div><label for="qname">Your name</label><input type="text" id="qname" placeholder="Jane Smith"></div>
-        <div><label for="qorg">Organisation</label><input type="text" id="qorg" placeholder="Acme Energy"></div>
-        <div><label for="qsens">What sensors / how many channels</label><input type="text" id="qsens" placeholder="e.g. 40 process tags, gas detection array"></div>
-        <div><label for="qhist">How much history you keep</label><input type="text" id="qhist" placeholder="e.g. 18 months in PI"></div>
-      </div>
-      <div style="margin-top:12px"><label for="qwhat">What you'd want checked first</label>
-        <input type="text" id="qwhat" placeholder="optional — a unit, a suspect instrument, a period"></div>
-      <p style="margin-top:20px"><a id="qBtn" class="btn" href="#">Open this in your email &rarr;</a></p>
-      <p class="fine" style="margin-top:12px"><b>Nothing is sent from this page.</b> The button
-      opens your own email client with what you typed above already filled in. No form service,
-      no tracking, no third party. You send it, or you don't.</p>
-    </div>
-
     <p class="fine">Straight talk on your data: we analyze what you send us to produce your report and nothing else. The engine may surface deeper structure in your sensor data along the way — anything beyond the report, we only pursue if you ask us to. Your data is used for your report. Period.</p>
   </div>
 </section>
@@ -251,30 +218,5 @@
   </div>
 </footer>
 
-
-<script>
-(function(){
-  var ids=["qname","qorg","qsens","qhist","qwhat"];
-  function v(id){var e=document.getElementById(id);return e&&e.value?e.value.trim():"";}
-  function build(){
-    var body=[
-      v("qname")?"Name: "+v("qname"):"",
-      v("qorg")?"Organisation: "+v("qorg"):"","",
-      "What I run:      "+(v("qsens")||"(not stated)"),
-      "History kept:    "+(v("qhist")||"(not stated)"),
-      v("qwhat")?("Check first:     "+v("qwhat")):"","",
-      "I'd like the free look-back audit. Please let me know how to send the data",
-      "and what format is easiest.","",
-      "(Sent from quantum-children.com)"
-    ].join("\n");
-    var btn=document.getElementById("qBtn");
-    if(btn) btn.href="mailto:jim@lattice24.com?subject="
-      +encodeURIComponent("Free sensor audit — "+(v("qorg")||v("qname")||"enquiry"))
-      +"&body="+encodeURIComponent(body);
-  }
-  ids.forEach(function(id){var e=document.getElementById(id); if(e) e.addEventListener("input",build);});
-  build();
-})();
-</script>
 </body>
 </html>
