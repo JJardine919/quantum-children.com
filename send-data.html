@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Send one file, get one report — Quantum Children</title>
+<meta name="description" content="Email one CSV of sensor or process data you already log. Get back what moved, what the numbers support, and what they do not. First one is free.">
+<style>
+  :root{
+    --ink:#12201a; --ink2:#33463d; --paper:#f6f4ef; --card:#ffffff;
+    --green:#1f7a4d; --green-dk:#175c3a; --amber:#c8611a; --line:#e2ded4; --steel:#5c6b63;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--ink:#e9e7e1;--ink2:#b3bdb7;--paper:#111613;--card:#182019;
+          --green:#4fbe86;--green-dk:#6ed3a0;--line:#26302a;--steel:#8d9a92}
+  }
+  :root[data-theme="dark"]{--ink:#e9e7e1;--ink2:#b3bdb7;--paper:#111613;--card:#182019;
+          --green:#4fbe86;--green-dk:#6ed3a0;--line:#26302a;--steel:#8d9a92}
+  :root[data-theme="light"]{--ink:#12201a;--ink2:#33463d;--paper:#f6f4ef;--card:#ffffff;
+          --green:#1f7a4d;--green-dk:#175c3a;--line:#e2ded4;--steel:#5c6b63}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       background:var(--paper);color:var(--ink);line-height:1.65;font-size:17px}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+  header{border-bottom:1px solid var(--line);background:var(--paper)}
+  .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:16px;flex-wrap:wrap}
+  .logo{font-weight:800;font-size:1.22rem;letter-spacing:.05em;text-decoration:none;color:var(--ink)}
+  .logo span{color:var(--green)}
+  .nav a.back{font-size:.9rem;color:var(--green);text-decoration:none;font-weight:600}
+  .hero{padding:52px 0 20px}
+  .kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+  h1{font-size:clamp(1.85rem,4.6vw,2.7rem);line-height:1.12;letter-spacing:-.02em;margin-bottom:16px}
+  h2{font-size:1.12rem;margin:0 0 10px;letter-spacing:-.01em;padding-top:26px;border-top:1px solid var(--line)}
+  .lede{color:var(--ink2);font-size:1.07rem}
+  section{margin:26px 0}
+  p{margin-bottom:12px}
+  ul{margin:0 0 12px 1.15rem;display:flex;flex-direction:column;gap:.55rem}
+  li::marker{color:var(--steel)}
+  .byline{font-family:var(--mono);font-size:.75rem;color:var(--steel);line-height:1.8;
+          padding-bottom:18px;border-bottom:2px solid var(--ink);margin-bottom:8px}
+  .panel{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--green);
+         border-radius:0 8px 8px 0;padding:20px 22px;margin:18px 0}
+  .panel-head{font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;
+              text-transform:uppercase;color:var(--steel);margin-bottom:14px}
+  .pair{display:flex;flex-wrap:wrap;gap:28px}
+  .val{display:flex;flex-direction:column;gap:4px}
+  .val .n{font-family:var(--mono);font-size:1.8rem;font-weight:700;line-height:1;letter-spacing:-.02em}
+  .val .n.sig{color:var(--green)}
+  .val .k{font-size:.79rem;color:var(--ink2)}
+  .note{font-size:.88rem;color:var(--ink2);margin-top:14px;margin-bottom:0}
+  .flags{display:flex;flex-direction:column;gap:.6rem}
+  .flag{display:grid;grid-template-columns:auto 1fr;gap:.7rem;align-items:baseline;font-size:.95rem}
+  .flag .m{font-family:var(--mono);font-size:.67rem;letter-spacing:.06em;
+           text-transform:uppercase;color:var(--amber);white-space:nowrap}
+  .flag .m.ok{color:var(--green)}
+  .steps{list-style:none;margin-left:0;counter-reset:s;gap:.9rem}
+  .steps li{counter-increment:s;display:grid;grid-template-columns:1.9rem 1fr;gap:.7rem;align-items:start}
+  .steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);
+                    font-size:.75rem;color:var(--green);padding-top:.28rem}
+  .cta{background:color-mix(in srgb,var(--green) 10%,transparent);
+       border:1px solid var(--green);border-radius:8px;padding:20px 22px;margin:18px 0}
+  .cta .addr{font-family:var(--mono);font-size:1.05rem;font-weight:700;margin-bottom:10px}
+  a{color:var(--green)}
+  code{font-family:var(--mono);font-size:.9em}
+  footer{border-top:2px solid var(--ink);margin-top:44px;padding:20px 0 46px;
+         color:var(--steel);font-size:.8rem;font-family:var(--mono);line-height:1.85}
+  @media (max-width:480px){.val .n{font-size:1.5rem}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap"><div class="nav">
+  <a class="logo" href="/">QUANTUM <span>CHILDREN</span></a>
+  <a class="back" href="/">&larr; back</a>
+</div></div></header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <p class="kicker">Send one file</p>
+    <h1>Send one file. Get one report.</h1>
+    <p class="lede">No meeting, no call, no site visit, nothing installed on your
+    network. You email a CSV of data you already log. I run it and email back what
+    moved, what the numbers will support, and what they will not.</p>
+  </div>
+
+  <p class="byline">
+    James Jardine &middot; ORCID 0009-0004-9073-7192<br>
+    Thirty years a pipefitter in Alberta gas plants. I write the software myself.
+  </p>
+
+  <section>
+    <h2>What you send</h2>
+    <p>One CSV. Historical is fine, redacted is fine, one unit is enough.</p>
+    <ul>
+      <li><strong>Rows in time order</strong> &mdash; oldest first. A few hundred at minimum; a few thousand is better.</li>
+      <li><strong>One column per channel.</strong> Sixteen is the natural fit. Fewer works and is stated as a limitation in the report.</li>
+      <li><strong>Optional:</strong> a column naming the run or batch, and a column labelling condition &mdash; <code>ok</code> / <code>fault</code>, before / after, whatever you use.</li>
+    </ul>
+    <p>No system access. No VPN. No agent on your network. A file goes one way and
+    a report comes back the other.</p>
+  </section>
+
+  <section>
+    <h2>What comes back</h2>
+    <ul class="steps">
+      <li>Whether each channel carries a readable signal at all, or is too flat to say anything about.</li>
+      <li>If you labelled conditions: whether the groups actually separate, with a permutation test behind the number rather than an assertion.</li>
+      <li>Every confound I can see from the file itself &mdash; stated on the face of the report, not buried.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>A worked example you can check yourself</h2>
+    <p>Run on <strong>IndPenSim</strong>, a public 100-batch penicillin fermentation
+    dataset &mdash; 113,935 samples, 22 process sensors, ten batches with a known
+    fault. None of this is my data or a customer's; you can download it and repeat it.</p>
+
+    <div class="panel">
+      <p class="panel-head">Faulted batches vs healthy &middot; same control regime</p>
+      <div class="pair">
+        <div class="val">
+          <span class="n sig">p = 0.018</span>
+          <span class="k">The engine separated the faulted batches</span>
+        </div>
+        <div class="val">
+          <span class="n">p = 0.22</span>
+          <span class="k">Control &mdash; healthy vs healthy, correctly found nothing</span>
+        </div>
+      </div>
+      <p class="note">The second number matters as much as the first. A test that
+      cannot come back empty is not a test.</p>
+    </div>
+
+    <p>Two things the report said out loud, unprompted:</p>
+    <div class="flags">
+      <div class="flag"><span class="m">Flag</span><span>The faulted batches were all run at the end of the campaign, so &ldquo;faulted&rdquo; and &ldquo;run last&rdquo; cannot be told apart from that file. The finding is suggestive, not settled &mdash; and no analysis fixes it after the fact.</span></div>
+      <div class="flag"><span class="m">Flag</span><span>Comparing the faults against <em>all</em> 90 healthy batches gives an effect roughly 2.4&times; larger &mdash; because those 90 span three different control strategies. Against the 30 that actually match, it shrinks. The published figure for this dataset uses the larger comparison.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What it refuses to do</h2>
+    <p>Each of these is a mistake I made, found, and turned into a gate.</p>
+    <div class="flags">
+      <div class="flag"><span class="m">Stops</span><span>If the measurement scale saturates on your data, it reports nothing and says why. A flat channel returns a clean, believable result that means nothing at all.</span></div>
+      <div class="flag"><span class="m">Stops</span><span>No number is reported without a control that could have killed it.</span></div>
+      <div class="flag"><span class="m">Never</span><span>No model is trained on your data and no threshold is tuned toward an answer. The one thing that can adapt is the measurement scale &mdash; if your channels move too fast for the standard one, it is refitted to your data&rsquo;s own spread and the report says so on its face. That refit reads the shape of your data only; <strong>it never sees your labels</strong>, so it cannot be steered toward a result you were hoping for.</span></div>
+      <div class="flag"><span class="m ok">Says so</span><span>If your data cannot answer your question, that is the report. You get a plain &ldquo;this does not show what you were hoping&rdquo; rather than a number dressed up to look like one.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Cost</h2>
+    <p><strong>The first file costs nothing.</strong> No account, no card, no trial
+    that converts. You get the report and decide whether it was worth anything. If
+    it was not, we are done and you have lost one data export.</p>
+    <p>There are no production customers yet. You would be the first, which is
+    exactly why I am not asking for money.</p>
+  </section>
+
+  <section>
+    <h2>Send it</h2>
+    <div class="cta">
+      <p class="addr"><a href="mailto:jim@lattice24.com?subject=Data%20for%20analysis">jim@lattice24.com</a></p>
+      <p style="font-size:.92rem;margin-bottom:0;">Attach the CSV, or a link to it if
+      it is large. One line about what the channels are and what you are trying to
+      find out is enough &mdash; I will ask if I need more. The reply comes by email;
+      I do not need a call and will not ask you for one.</p>
+    </div>
+    <p style="font-size:.92rem;color:var(--ink2)">If your file is too sensitive to
+    send, say so and I will tell you exactly which columns and how many rows would
+    be enough, or how to shift and rescale it so the structure survives and the
+    values do not.</p>
+  </section>
+
+  <footer>
+    &copy; 2026 QUANTUM CHILDREN &middot; 2396179 ALBERTA INC.<br>
+    JAMES JARDINE &middot; ORCID 0009-0004-9073-7192<br>
+    Worked example is public data. All results are measured from real data or
+    explicitly labeled as projections.<br>
+    <a href="/">&larr; Home</a> &middot; <a href="/audit.html">Sensor entropy audit</a>
+  </footer>
+
+</div>
+</body>
+</html>
